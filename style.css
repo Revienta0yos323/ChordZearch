@@ -1,0 +1,389 @@
+/* Variables de colores para temas claro y oscuro */
+:root {
+  --primary-green: #629264;
+  --dark-green: #3d583e;
+  --background-light: #f4f4f4;
+  --background-dark: #1b1b1b;
+  --text-light: #ffffff;
+  --text-dark: #000000;
+}
+
+/* Estilos generales del cuerpo */
+:root {
+  --bg-start: #ffffff;
+  --bg-end: #e0e0e0;
+  --text-dark: #222222;
+  --text-light: #ffffff;
+  --primary: #4caf50;
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-dark);
+  transition: color 0.3s;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('blanco.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+body.dark-mode::before {
+  background-image: url('Negro.png');
+  color: var(--text-light);
+  transition: color 0.3s;
+}
+/* Estilos de la barra lateral */
+.sidebar {
+  width: 220px;
+  background-color: var(--primary-green);
+  padding: 20px;
+  color: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+.sidebar h2 {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+/* Variables de colores para el piano y otros elementos */
+:root {
+  --bg: #fdfcfb;
+  --text: #333;
+  --highlight: #81c784;
+  --key-white: #fff;
+  --key-black: #1b1b1b;
+  --green-dark: #406343;
+  --green-light: #85ac86;
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* Variables para modo oscuro */
+body.dark {
+  --bg: #1e1e1e;
+  --text: #000000;
+  --key-white: #ffffff;
+  --key-black: #222;
+  --highlight: #6c916d;
+  --shadow: rgba(255, 255, 255, 0.1);
+}
+
+/* Reset de márgenes y paddings, y fuente */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Estilos generales del cuerpo para layout */
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Estilos de la barra lateral */
+.sidebar {
+  width: 220px;
+  background: var(--green-dark);
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 4px 0 8px var(--shadow);
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* Grupos dentro de la barra lateral */
+.sidebar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilos para botones y select en la barra lateral */
+.sidebar-group button,
+.sidebar-group select {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--green-light);
+  color: #1b1b1b;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Estilos del área principal */
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Estilos del encabezado */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+header p {
+  font-size: 1rem;
+  color: var(--green-dark);
+}
+
+/* Área donde se muestra el piano */
+.piano-area {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  background: linear-gradient(to bottom, #f2f2f2, #e8e8e8);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px var(--shadow);
+}
+
+/* Contenedor de una octava */
+.octave {
+  display: flex;
+  position: relative;
+}
+
+/* Teclas blancas del piano */
+.white-key {
+  position: relative;
+  width: 55px;
+  height: 220px;
+  margin: 0 0px;
+  background: var(--key-white);
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--shadow);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+/* Teclas blancas activas (seleccionadas) */
+.white-key.active {
+  background: var(--highlight);
+  color: white;
+  transform: scale(1.03);
+}
+
+/* Teclas negras del piano */
+.black-key {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 140px;
+  background: var(--key-black);
+  z-index: 2;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px var(--shadow);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: white;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+/* Teclas negras activas (seleccionadas) */
+.black-key.active {
+  background: var(--highlight);
+  color: white;
+  transform: scale(1.05) translateX(-50%);
+}
+
+/* Etiqueta para teclas negras */
+.black-key-label {
+  margin-bottom: 3px;
+}
+
+/* Área para mostrar resultados */
+.result {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  background: var(--green-light);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px var(--shadow);
+}
+
+/* Estilos para listas en la barra lateral */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+/* Estilos generales del main */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Encabezado principal */
+.main-header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.main-header p {
+  margin: 5px 0 20px;
+}
+
+/* Controles */
+.controls {
+  margin-bottom: 20px;
+}
+
+/* Estilos para botones */
+button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-green);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Efecto hover para botones */
+button:hover {
+  background-color: #388e3c;
+}
+
+/* Estilos para el área de resultados */
+.result {
+  font-size: 1.2em;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Área del piano */
+.piano-area {
+  display: flex;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+/* Estilos generales para teclas */
+.key {
+  position: relative;
+  width: 60px;
+  height: 220px;
+  border: 1px solid #333;
+  background: white;
+  margin: 0 -1px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Texto dentro de las teclas */
+.key span {
+  font-size: 12px;
+  vertical-align: super;
+}
+
+/* Teclas negras */
+.key.black {
+  background: black;
+  width: 40px;
+  height: 140px;
+  margin-left: -20px;
+  margin-right: -20px;
+  z-index: 2;
+  color: white;
+}
+
+/* Teclas activas */
+.key.active {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+/* Teclas negras activas */
+.key.black.active {
+  background-color: var(--dark-green);
+}
+
+/* Bordes redondeados para la primera y última tecla */
+.key:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.key:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Estilos para modo oscuro */
+body.dark-mode .sidebar {
+  background-color: var(--dark-green);
+}
+
+body.dark-mode .key {
+  background-color: #eee;
+  color: #111;
+}
+
+body.dark-mode .key.black {
+  background-color: #444;
+  color: #eee;
+}
+
+body.dark-mode button {
+  background-color: var(--dark-green);
+}
+
+/* Estilos para el pie de página */
+.main-footer {
+  text-align: center;
+  margin-top: 30px;
+  color: gray;
+}
