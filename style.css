@@ -43,7 +43,7 @@ body::before {
 }
 
 body.dark-mode::before {
-  background-image: url('Negro.png');
+  background-image: url('Negro.PNG');
   color: var(--text-light);
   transition: color 0.3s;
 }
